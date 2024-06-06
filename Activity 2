@@ -1,0 +1,33 @@
+namespace CST_150_Activity_2
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void btnApply_Click(object sender, EventArgs e)
+        {
+            var seconds = 0;
+            const int SecondsInMinutes = 60;
+            const int SecondsInHours = 3600;
+            const int SecondsInDays = 86400;
+
+            if (int.TryParse(txtUserEntry.Text, out seconds))
+            {
+                lblResults.Text = string.Format("There are {0:#,#\"} minute(s) in {1:#,#} seconds. \n",
+                    seconds / SecondsInMinutes, seconds);
+                lblResults.Text += string.Format("There are {0:#,#\"} hours in {1:#,#} seconds. \n",
+                    seconds / SecondsInHours, seconds);
+                lblResults.Text += string.Format("There are {0:#,#\"} days in {1:#,#} seconds. \n",
+                    seconds / SecondsInDays, seconds);
+
+            }
+            else
+            {
+                lblResults.Text = "Please enter an int to continue.";
+            }
+        }
+    }
+}
