@@ -1,3 +1,5 @@
+//Jake Schuacher. This is my own code. June 16, 2024
+
 using System.Runtime.CompilerServices;
 
 namespace CST_150_Activity_3
