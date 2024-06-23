@@ -1,4 +1,5 @@
-namespace CSt_150_Milestone_4
+//Jake Schumacher. This is my own code. June 22, 2024
+namespace CST_150_Milestone_4
 {
     public partial class Form1 : Form
     {
