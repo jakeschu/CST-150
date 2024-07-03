@@ -12,7 +12,7 @@ namespace Activity1
 
         private void DisplayNameButton_Click(object sender, EventArgs e)
         {
-            name = NameTextbox.Text;
+            string name = NameTextbox.Text;
             NameDisplayLabel.Text = "Your Name Is: " + name;
         }
     }
