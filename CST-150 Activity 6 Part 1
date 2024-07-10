@@ -1,0 +1,76 @@
+using CST_150_ListTogv.BusinessLayer;
+using CST_150_ListTogv.Models;
+
+namespace CST_150_ListTogv
+{
+    public partial class FrmInventory : Form
+    {
+        /// <summary>
+        /// Create the class level object
+        /// </summary>
+        List<InvItem> invItems = new List<InvItem>();
+
+        private int SelectedGridIndex { get; set; }
+        public FrmInventory()
+        {
+            InitializeComponent();
+        }
+
+        /// <summary>
+        /// Populate the grid when the form loads
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void PopulateGrid_LoadEventHandler(object sender, EventArgs e)
+        {
+            Inventory readInv = new Inventory();
+            invItems = readInv.ReadInventory(invItems);
+
+            gvInv.DataSource = null;
+            gvInv.DataSource = invItems;
+
+            foreach (DataGridViewColumn column in gvInv.Columns)
+            {
+                switch (column.Index)
+                {
+                    case 0:
+                        column.HeaderText = "Bunny Type";
+                        break;
+                    case 1:
+                        column.HeaderText = "Bunny Color";
+                        break;
+                    case 2:
+                        column.HeaderText = "Quantity";
+                        column.DefaultCellStyle.Format = "NO";
+                        column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                        break;
+                    default:
+                        MessageBox.Show("Invalid column was trying to be accessed!");
+                        break;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Event Handler to handle click events of Data Grid View.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void GridView_ClickEventHandler(object sender, EventArgs e)
+        {
+            SelectedGridIndex = gvInv.CurrentRow.Index;
+        }
+
+        /// <summary>
+        /// Event Handler to manage button to increment quantity
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnIncQty_Click(object sender, EventArgs e)
+        {
+            Inventory incQty = new Inventory();
+            invItems = incQty.IncQtyValue(invItems, SelectedGridIndex);
+            gvInv.Refresh();
+        }
+    }
+}
