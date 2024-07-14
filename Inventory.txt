@@ -1,0 +1,11 @@
+Name, Qty, Price
+Apples, 2, $2.00
+Bananas, 1, $0.50
+Bread, 1, $2.00
+Milk, 1, $2.00
+Soda, 3, $6.00
+Crackers, 2, $3.00
+Water, 1, $4.00
+Cheese, 2, $3.00
+Beef, 1, $10.00
+Yogurt, 5, $5.00
